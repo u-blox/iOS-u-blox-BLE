@@ -1,0 +1,152 @@
+# Wavefront material file C:\Users\adam.johansson\Desktop\LILY-B1\CAD models\NINA-B111.mtl
+
+newmtl NINA_B111Mtl01
+Ka 0.0247059 0.0466667 0.00235294
+Kd 0.247059 0.466667 0.0235294
+Ks 0 0 0
+illum 1
+Ns 5
+
+newmtl NINA_B111Mtl02
+Ka 0 0.025098 0
+Kd 0 0.25098 0
+Ks 0 0 0
+illum 1
+Ns 5
+
+newmtl NINA_B111Mtl03
+Ka 0.0752941 0.0752941 0.0752941
+Kd 0.602353 0.602353 0.602353
+Ks 0.90009 0.90009 0.90009
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl04
+Ka 0 0.0501961 0.025098
+Kd 0 0.501961 0.25098
+Ks 0 0 0
+illum 1
+Ns 5
+
+newmtl NINA_B111Mtl05
+Ka 0.1 0.1 0.1
+Kd 0.8 0.8 0.8
+Ks 0.9 0.9 0.9
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl06
+Ka 0.0956863 0.0776471 0.00431373
+Kd 1.90078 1.66235 0.481569
+Ks 0.861176 0.698824 0.0388235
+illum 3
+Ns 150
+
+newmtl NINA_B111Mtl07
+Ka 0.1 0.1 0.1
+Kd 0.8 0.8 0.8
+Ks 0.9 0.9 0.9
+illum 2
+Ns 150
+# note: run texture2D program or Director's Create Textures on Label_NINA-B111.png
+map_Kd Label_NINA-B111.mpc
+
+newmtl NINA_B111Mtl08
+Ka 0 0.0501961 0
+Kd 0 0.376471 0
+Ks 0.850085 0.850085 0.850085
+illum 2
+Ns 248.36
+
+newmtl NINA_B111Mtl09
+Ka 0 0.1 0.1
+Kd 0 0.8 0.8
+Ks 0.90009 0.90009 0.90009
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl10
+Ka 0.0752941 0.0752941 0
+Kd 0.602353 0.602353 0
+Ks 0.90009 0.90009 0.90009
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl11
+Ka 0.025098 0.025098 0.025098
+Kd 0.200784 0.200784 0.200784
+Ks 0.90009 0.90009 0.90009
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl12
+Ka 0.0423529 0.0423529 0
+Kd 0.338824 0.338824 0
+Ks 0.90009 0.90009 0.90009
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl13
+Ka 0.1 0 0
+Kd 0.8 0 0
+Ks 0.90009 0.90009 0.90009
+illum 2
+Ns 150
+
+newmtl NINA_B111Mtl14
+Ka 0.025098 0 0
+Kd 0.100392 0 0
+Ks 0.25098 0 0
+illum 3
+Ns 408
+
+newmtl NINA_B111Mtl15
+Ka 0 0.025098 0
+Kd 0 0.25098 0
+Ks 0.20002 0.20002 0.20002
+illum 2
+Ns 21
+
+newmtl NINA_B111Mtl16
+Ka 0.1 0.1 0.1
+Kd 0.5 0.5 0.5
+Ks 0.3 0.3 0.3
+illum 3
+Ns 52
+
+newmtl NINA_B111Mtl17
+Ka 0.0501961 0.0501961 0.0501961
+Kd 0.451765 0.451765 0.451765
+Ks 0.60006 0.60006 0.60006
+illum 3
+Ns 9
+
+newmtl NINA_B111Mtl18
+Ka 0.1 0.1 0.1
+Kd 0.4 0.4 0.4
+Ks 1 1 1
+illum 3
+Ns 408
+
+newmtl NINA_B111Mtl19
+Ka 0.0501961 0.025098 0.025098
+Kd 0.25098 0.12549 0.12549
+Ks 0.150588 0.0752941 0.0752941
+illum 3
+Ns 52
+
+newmtl NINA_B111Mtl20
+Ka 0.0976471 0.0976471 0.0976471
+Kd 0.750588 0.750588 0.750588
+Ks 0.90009 0.90009 0.90009
+illum 3
+Ns 405
+
+newmtl NINA_B111Mtl21
+Ka 0.1 0.1 0.1
+Kd 0.8 0.8 0.8
+Ks 0.9 0.9 0.9
+illum 2
+Ns 150
+# note: run texture2D program or Director's Create Textures on Nordic nRF52832 6x6mm with pin description.png
+map_Kd Nordic nRF52832 6x6mm with pin description.mpc

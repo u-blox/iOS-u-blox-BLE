@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>B136BBCB-9F80-44F2-8C2C-C58767A5874A</string>
+	<key>IDESourceControlProjectName</key>
+	<string>U-blox</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>CD31FC2647D4E0BF376BFB0BA2A46B3C180F5AD8</key>
+		<string>https://bitbucket.org/saguru/u-box-ios.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>U-blox.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>CD31FC2647D4E0BF376BFB0BA2A46B3C180F5AD8</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://bitbucket.org/saguru/u-box-ios.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>CD31FC2647D4E0BF376BFB0BA2A46B3C180F5AD8</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>CD31FC2647D4E0BF376BFB0BA2A46B3C180F5AD8</string>
+			<key>IDESourceControlWCCName</key>
+			<string>U-blox</string>
+		</dict>
+	</array>
+</dict>
+</plist>

@@ -707,7 +707,6 @@ typedef enum
 
 - (void)sendMessage: (NSString*)message
 {
-    
     if( ((chatState == CHAT_S_APPEARED_IDLE) || (chatState == CHAT_S_APPEARED_WAIT_TX)) &&
        (message != nil) && (message.length > 0))
     {
@@ -734,7 +733,7 @@ typedef enum
     NSRange         range;
     BOOL            ok;
     NSInteger       nWrites = 0;
-    
+        
     if( (chatState == CHAT_S_APPEARED_IDLE) && (txQueue.count > 0))
     {
         outstandingMsg = [txQueue objectAtIndex:0];

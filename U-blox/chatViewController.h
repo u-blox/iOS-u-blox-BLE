@@ -38,6 +38,7 @@
 @property (strong, nonatomic) IBOutlet UITextField *messageTextfield;
 @property (strong, nonatomic) IBOutlet UIButton *sendButton;
 
+@property (strong, nonatomic) IBOutlet UISwitch *sendcrSwitch;
 
 
 - (IBAction) sendMessage: (id) UIButton;

@@ -28,7 +28,7 @@
 {
     NSMutableArray *messages;
 }
-@synthesize navbarLabel, navbarButton, tableview, messageTextfield, messageView, messageViewDistance, sendButton;
+@synthesize navbarLabel, navbarButton, tableview, messageTextfield, messageView, messageViewDistance, sendButton, sendcrSwitch;
 
 
 - (void)viewDidLoad {
@@ -45,8 +45,11 @@
 {
     [super viewWillAppear:animated];
     
+    // Check if connected peripheral has gyro service
     CBPeripheral *currentPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
     
+    //modelButton.hidden = YES;
+    //modelScene.hidden = YES;
     messageTextfield.enabled = NO;
     messageTextfield.placeholder = @"No serial service";
     sendButton.enabled = NO;
@@ -123,12 +126,6 @@
     [[NSNotificationCenter defaultCenter] removeObserver:self
                                                     name:UIKeyboardWillHideNotification
                                                   object:nil];
-    
-    [[NSNotificationCenter defaultCenter] removeObserver:self
-                                                    name:@"serialportMessage"
-                                                  object:nil];
-    
-    
 }
 
 - (void) serialportMessage:(NSNotification *) notification
@@ -284,13 +281,24 @@
 
 -(void) doSendMessage
 {
+    
     NSString *textToSend = messageTextfield.text;
+    NSString *textMessage = nil;
     
     messageTextfield.text = @"";
     
+    if(sendcrSwitch.isOn)
+    {
+        textMessage = [textToSend stringByAppendingString:@"\r"];
+    }
+    else
+    {
+	textMessage = textToSend;
+    }
+    
     CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
     
-    [[olp425 sharedInstance] serialSendMessageToPeripheralUUID:thisPeripheral.identifier.UUIDString message:textToSend];
+    [[olp425 sharedInstance] serialSendMessageToPeripheralUUID:thisPeripheral.identifier.UUIDString message:textMessage];
 
 }
 

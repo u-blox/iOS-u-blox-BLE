@@ -515,9 +515,7 @@
 				TargetAttributes = {
 					AB5B398A1A9B24EB002ACEDF = {
 						CreatedOnToolsVersion = 6.1.1;
-						DevelopmentTeam = 6SGQZ32758;
-						DevelopmentTeamName = "Magic Technology AB";
-						ProvisioningStyle = Automatic;
+						DevelopmentTeam = 92V5UU94YL;
 					};
 					AB5B39A61A9B24EB002ACEDF = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -782,16 +780,14 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer: Bill Martensson (98W35HVF6Z)";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6SGQZ32758;
 				INFOPLIST_FILE = "U-blox/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "se.magictechnology.se.com.connectblue.cB-OLP425";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.connectblue.cB-OLP425";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -800,15 +796,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
-				DEVELOPMENT_TEAM = 6SGQZ32758;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: u-blox Malmo AB (92V5UU94YL)";
 				INFOPLIST_FILE = "U-blox/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = "se.magictechnology.se.com.connectblue.cB-OLP425";
+				PRODUCT_BUNDLE_IDENTIFIER = "com.connectblue.cB-OLP425";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
-				PROVISIONING_PROFILE_SPECIFIER = "";
+				PROVISIONING_PROFILE = "026e2f39-737a-47bf-8a4b-7aa8fc853c6c";
 			};
 			name = Release;
 		};

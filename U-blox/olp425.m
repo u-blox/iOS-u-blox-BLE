@@ -349,8 +349,11 @@ static olp425 *shared = nil;
         if(peripheralSerialPortExist == false)
         {
             SerialPort* sp = [[SerialPort alloc] initWithPeripheral:peripheral andDelegate:self];
+            //NSLog(@"ADD THE SERIAL");
             [serialPorts addObject:sp];
-        } 
+        } else {
+            //NSLog(@"THE SERIAL EXISTS");
+        }
     }
     
     for(int i = 0;i < peripheral.services.count;i++)

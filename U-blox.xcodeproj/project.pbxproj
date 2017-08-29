@@ -60,13 +60,14 @@
 		AB2340FE1AB04ED20029B61B /* services@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = AB2340CB1AB04ED20029B61B /* services@3x.png */; };
 		AB2341011AC180BC0029B61B /* servicesViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2341001AC180BC0029B61B /* servicesViewController.m */; };
 		AB2341041AC182C30029B61B /* servicesTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB2341031AC182C30029B61B /* servicesTableViewCell.m */; };
+		AB25FC671F0249BE00D44945 /* serverViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB25FC661F0249BE00D44945 /* serverViewController.m */; };
 		AB5B39911A9B24EB002ACEDF /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39901A9B24EB002ACEDF /* main.m */; };
 		AB5B39941A9B24EB002ACEDF /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39931A9B24EB002ACEDF /* AppDelegate.m */; };
 		AB5B399D1A9B24EB002ACEDF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AB5B399B1A9B24EB002ACEDF /* Main.storyboard */; };
 		AB5B399F1A9B24EB002ACEDF /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AB5B399E1A9B24EB002ACEDF /* Images.xcassets */; };
 		AB5B39A21A9B24EB002ACEDF /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = AB5B39A01A9B24EB002ACEDF /* LaunchScreen.xib */; };
 		AB5B39AE1A9B24EB002ACEDF /* U_bloxTests.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39AD1A9B24EB002ACEDF /* U_bloxTests.m */; };
-		AB5B39B81A9B269F002ACEDF /* olp425.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39B71A9B269F002ACEDF /* olp425.m */; };
+		AB5B39B81A9B269F002ACEDF /* ublox.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39B71A9B269F002ACEDF /* ublox.m */; };
 		AB5B39BB1A9B32B0002ACEDF /* CoreBluetooth.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = AB5B39BA1A9B32B0002ACEDF /* CoreBluetooth.framework */; };
 		AB5B39BE1A9B4075002ACEDF /* scanViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39BD1A9B4075002ACEDF /* scanViewController.m */; };
 		AB5B39C11A9B41C7002ACEDF /* scanTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = AB5B39C01A9B41C7002ACEDF /* scanTableViewCell.m */; };
@@ -104,6 +105,9 @@
 		ABBD6ED91AE10CAC0062471F /* BLEDefinitions.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD6ED81AE10CAC0062471F /* BLEDefinitions.m */; };
 		ABBD6EDC1AE111870062471F /* ChatMessage.m in Sources */ = {isa = PBXBuildFile; fileRef = ABBD6EDB1AE111870062471F /* ChatMessage.m */; };
 		ABC252BE1C5253AF0046A8B1 /* art.scnassets in Resources */ = {isa = PBXBuildFile; fileRef = ABC252BD1C5253AF0046A8B1 /* art.scnassets */; };
+		ABECACBD1ECECBCB004DF96B /* performanceViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABECACBC1ECECBCB004DF96B /* performanceViewController.m */; };
+		ABECACC01ECECBDF004DF96B /* performanceTestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = ABECACBF1ECECBDF004DF96B /* performanceTestViewController.m */; };
+		ABECADC11EDE046F004DF96B /* stats.png in Resources */ = {isa = PBXBuildFile; fileRef = ABECADC01EDE046F004DF96B /* stats.png */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -172,6 +176,8 @@
 		AB2341001AC180BC0029B61B /* servicesViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = servicesViewController.m; sourceTree = "<group>"; };
 		AB2341021AC182C30029B61B /* servicesTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = servicesTableViewCell.h; sourceTree = "<group>"; };
 		AB2341031AC182C30029B61B /* servicesTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = servicesTableViewCell.m; sourceTree = "<group>"; };
+		AB25FC651F0249BE00D44945 /* serverViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = serverViewController.h; sourceTree = "<group>"; };
+		AB25FC661F0249BE00D44945 /* serverViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = serverViewController.m; sourceTree = "<group>"; };
 		AB5B398B1A9B24EB002ACEDF /* U-blox.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "U-blox.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5B398F1A9B24EB002ACEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB5B39901A9B24EB002ACEDF /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
@@ -183,8 +189,8 @@
 		AB5B39A71A9B24EB002ACEDF /* U-bloxTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "U-bloxTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		AB5B39AC1A9B24EB002ACEDF /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AB5B39AD1A9B24EB002ACEDF /* U_bloxTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = U_bloxTests.m; sourceTree = "<group>"; };
-		AB5B39B71A9B269F002ACEDF /* olp425.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = olp425.m; sourceTree = "<group>"; };
-		AB5B39B91A9B26BE002ACEDF /* olp425.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = olp425.h; sourceTree = "<group>"; };
+		AB5B39B71A9B269F002ACEDF /* ublox.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ublox.m; sourceTree = "<group>"; };
+		AB5B39B91A9B26BE002ACEDF /* ublox.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ublox.h; sourceTree = "<group>"; };
 		AB5B39BA1A9B32B0002ACEDF /* CoreBluetooth.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreBluetooth.framework; path = System/Library/Frameworks/CoreBluetooth.framework; sourceTree = SDKROOT; };
 		AB5B39BC1A9B4075002ACEDF /* scanViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = scanViewController.h; sourceTree = "<group>"; };
 		AB5B39BD1A9B4075002ACEDF /* scanViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = scanViewController.m; sourceTree = "<group>"; };
@@ -234,6 +240,11 @@
 		ABBD6EDA1AE111870062471F /* ChatMessage.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatMessage.h; sourceTree = "<group>"; };
 		ABBD6EDB1AE111870062471F /* ChatMessage.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatMessage.m; sourceTree = "<group>"; };
 		ABC252BD1C5253AF0046A8B1 /* art.scnassets */ = {isa = PBXFileReference; lastKnownFileType = wrapper.scnassets; path = art.scnassets; sourceTree = "<group>"; };
+		ABECACBB1ECECBCB004DF96B /* performanceViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = performanceViewController.h; sourceTree = "<group>"; };
+		ABECACBC1ECECBCB004DF96B /* performanceViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = performanceViewController.m; sourceTree = "<group>"; };
+		ABECACBE1ECECBDF004DF96B /* performanceTestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = performanceTestViewController.h; sourceTree = "<group>"; };
+		ABECACBF1ECECBDF004DF96B /* performanceTestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = performanceTestViewController.m; sourceTree = "<group>"; };
+		ABECADC01EDE046F004DF96B /* stats.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stats.png; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -255,6 +266,13 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6D0537B68EDDD4D742241BF5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
 		AB2340941AB04ED20029B61B /* img */ = {
 			isa = PBXGroup;
 			children = (
@@ -331,6 +349,7 @@
 		AB2340BF1AB04ED20029B61B /* tabGroup */ = {
 			isa = PBXGroup;
 			children = (
+				ABECADC01EDE046F004DF96B /* stats.png */,
 				AB2340C01AB04ED20029B61B /* chat.png */,
 				AB2340C11AB04ED20029B61B /* chat@2x.png */,
 				AB2340C21AB04ED20029B61B /* chat@3x.png */,
@@ -354,6 +373,7 @@
 				AB5B398D1A9B24EB002ACEDF /* U-blox */,
 				AB5B39AA1A9B24EB002ACEDF /* U-bloxTests */,
 				AB5B398C1A9B24EB002ACEDF /* Products */,
+				6D0537B68EDDD4D742241BF5 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -374,11 +394,17 @@
 				AB2340941AB04ED20029B61B /* img */,
 				AB5B39921A9B24EB002ACEDF /* AppDelegate.h */,
 				AB5B39931A9B24EB002ACEDF /* AppDelegate.m */,
-				AB5B39B91A9B26BE002ACEDF /* olp425.h */,
-				AB5B39B71A9B269F002ACEDF /* olp425.m */,
+				AB5B39B91A9B26BE002ACEDF /* ublox.h */,
+				AB5B39B71A9B269F002ACEDF /* ublox.m */,
 				AB6C66921AF775F200B1E414 /* infoViewController.h */,
 				AB6C66931AF775F200B1E414 /* infoViewController.m */,
 				AB5B399B1A9B24EB002ACEDF /* Main.storyboard */,
+				AB25FC651F0249BE00D44945 /* serverViewController.h */,
+				AB25FC661F0249BE00D44945 /* serverViewController.m */,
+				ABECACBB1ECECBCB004DF96B /* performanceViewController.h */,
+				ABECACBC1ECECBCB004DF96B /* performanceViewController.m */,
+				ABECACBE1ECECBDF004DF96B /* performanceTestViewController.h */,
+				ABECACBF1ECECBDF004DF96B /* performanceTestViewController.m */,
 				AB5B39BC1A9B4075002ACEDF /* scanViewController.h */,
 				AB5B39BD1A9B4075002ACEDF /* scanViewController.m */,
 				AB5B39BF1A9B41C7002ACEDF /* scanTableViewCell.h */,
@@ -490,9 +516,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AB5B39B41A9B24EB002ACEDF /* Build configuration list for PBXNativeTarget "U-bloxTests" */;
 			buildPhases = (
+				C1A19F2BB92008B17F4AE419 /* [CP] Check Pods Manifest.lock */,
 				AB5B39A31A9B24EB002ACEDF /* Sources */,
 				AB5B39A41A9B24EB002ACEDF /* Frameworks */,
 				AB5B39A51A9B24EB002ACEDF /* Resources */,
+				5931F5EA462730F7FBBB09DB /* [CP] Embed Pods Frameworks */,
+				CF480FD0902E97B72757ECEE /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -510,12 +539,13 @@
 		AB5B39831A9B24EB002ACEDF /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0610;
+				LastUpgradeCheck = 0900;
 				ORGANIZATIONNAME = "U-blox";
 				TargetAttributes = {
 					AB5B398A1A9B24EB002ACEDF = {
 						CreatedOnToolsVersion = 6.1.1;
 						DevelopmentTeam = 92V5UU94YL;
+						ProvisioningStyle = Automatic;
 					};
 					AB5B39A61A9B24EB002ACEDF = {
 						CreatedOnToolsVersion = 6.1.1;
@@ -587,6 +617,7 @@
 				AB2340D91AB04ED20029B61B /* info@2x.png in Resources */,
 				AB2340F81AB04ED20029B61B /* overview@3x.png in Resources */,
 				AB2340D61AB04ED20029B61B /* delete_devices@2x.png in Resources */,
+				ABECADC11EDE046F004DF96B /* stats.png in Resources */,
 				AB2340D21AB04ED20029B61B /* arrow.png in Resources */,
 				AB2340EE1AB04ED20029B61B /* rssi@2x.png in Resources */,
 				AB2340D81AB04ED20029B61B /* info.png in Resources */,
@@ -637,16 +668,67 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		5931F5EA462730F7FBBB09DB /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-U-bloxTests/Pods-U-bloxTests-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		C1A19F2BB92008B17F4AE419 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		CF480FD0902E97B72757ECEE /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-U-bloxTests/Pods-U-bloxTests-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		AB5B39871A9B24EB002ACEDF /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				AB2341041AC182C30029B61B /* servicesTableViewCell.m in Sources */,
+				ABECACBD1ECECBCB004DF96B /* performanceViewController.m in Sources */,
 				ABA822711AD7E5DC00806419 /* servicesDetailViewController.m in Sources */,
 				AB6C66941AF775F200B1E414 /* infoViewController.m in Sources */,
 				AB5B39C11A9B41C7002ACEDF /* scanTableViewCell.m in Sources */,
+				ABECACC01ECECBDF004DF96B /* performanceTestViewController.m in Sources */,
 				AB5B39BE1A9B4075002ACEDF /* scanViewController.m in Sources */,
+				AB25FC671F0249BE00D44945 /* serverViewController.m in Sources */,
 				ABA822771AD7F7EB00806419 /* editViewController.m in Sources */,
 				AB5B39941A9B24EB002ACEDF /* AppDelegate.m in Sources */,
 				ABBD6ED91AE10CAC0062471F /* BLEDefinitions.m in Sources */,
@@ -658,7 +740,7 @@
 				AB2341011AC180BC0029B61B /* servicesViewController.m in Sources */,
 				ABBD6EDC1AE111870062471F /* ChatMessage.m in Sources */,
 				ABA822AC1ADBDAA600806419 /* chatTableViewCell.m in Sources */,
-				AB5B39B81A9B269F002ACEDF /* olp425.m in Sources */,
+				AB5B39B81A9B269F002ACEDF /* ublox.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -708,20 +790,30 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
@@ -749,13 +841,21 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -763,6 +863,7 @@
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
 				GCC_WARN_UNDECLARED_SELECTOR = YES;
@@ -782,12 +883,14 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "U-blox/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.connectblue.cB-OLP425";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -796,13 +899,15 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: u-blox Malmo AB (92V5UU94YL)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = "U-blox/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.connectblue.cB-OLP425";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "026e2f39-737a-47bf-8a4b-7aa8fc853c6c";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
@@ -820,6 +925,7 @@
 				);
 				INFOPLIST_FILE = "U-bloxTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.saguru.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/U-blox.app/U-blox";
 			};
@@ -835,6 +941,7 @@
 				);
 				INFOPLIST_FILE = "U-bloxTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = "se.saguru.$(PRODUCT_NAME:rfc1034identifier)";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/U-blox.app/U-blox";
 			};

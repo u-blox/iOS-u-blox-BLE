@@ -25,10 +25,15 @@
 @end
 
 @implementation infoViewController
+@synthesize versionLabel;
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
+    NSDictionary *info = [[NSBundle mainBundle] infoDictionary];
+    NSString *version = [info objectForKey:@"CFBundleShortVersionString"];
+    
+    versionLabel.text = [NSString stringWithFormat:@"Version: %@", version];
 }
 
 - (void)didReceiveMemoryWarning {

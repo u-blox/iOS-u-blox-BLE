@@ -20,6 +20,8 @@
 
 #import "AppDelegate.h"
 
+
+
 @interface AppDelegate ()
 
 @end
@@ -40,8 +42,8 @@
       [UIColor whiteColor], NSForegroundColorAttributeName,
       nil] forState:UIControlStateSelected];
     
-    [[UITabBar appearance] setSelectedImageTintColor:[UIColor whiteColor]];
-
+    [[UITabBar appearance] setTintColor:[UIColor whiteColor]];
+    
     return YES;
 }
 

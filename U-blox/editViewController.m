@@ -33,7 +33,7 @@
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     CBService *thisService = nil;
     CBCharacteristic *thisCharacteristic = nil;
@@ -43,13 +43,13 @@
         thisService = [thisPeripheral.services objectAtIndex:i];
         if([thisService.UUID.UUIDString isEqualToString:serviceUUID])
         {
-            serviceLabel.text = [[olp425 sharedInstance] CBUUIDString:thisService.UUID];
+            serviceLabel.text = [[ublox sharedInstance] CBUUIDString:thisService.UUID];
             for(int j = 0;j < thisService.characteristics.count;j++)
             {
                 thisCharacteristic = [thisService.characteristics objectAtIndex:j];
                 if([thisCharacteristic.UUID.UUIDString isEqualToString:characteristicUUID])
                 {
-                    characteristicLabel.text = [[olp425 sharedInstance] strFromCharacteristicUUID:thisService.UUID charactUuid:thisCharacteristic.UUID];
+                    characteristicLabel.text = [[ublox sharedInstance] strFromCharacteristicUUID:thisService.UUID charactUuid:thisCharacteristic.UUID];
                     
                     valueLabel.text = strFromCharacteristicValue(thisService.UUID, thisCharacteristic.UUID, thisCharacteristic.value);
                     
@@ -96,7 +96,7 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
 
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     CBService *thisService = nil;
     CBCharacteristic *thisCharacteristic = nil;
@@ -120,7 +120,7 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField{
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     CBService *thisService = nil;
     CBCharacteristic *thisCharacteristic = nil;
@@ -160,7 +160,7 @@
         if(ok == TRUE)
         {
             NSData *valueData = [NSData  dataWithBytes:buf length:len];
-            
+        
             if((thisCharacteristic.properties & 0x04) != 0)
             {
                 [thisPeripheral writeValue:valueData forCharacteristic:thisCharacteristic type:CBCharacteristicWriteWithoutResponse];

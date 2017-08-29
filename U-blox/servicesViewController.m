@@ -43,13 +43,13 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
 
-    if([[[olp425 sharedInstance] currentPeripheralUUID] isEqualToString:@""])
+    if([[[ublox sharedInstance] currentPeripheralUUID] isEqualToString:@""])
     {
         self.navbarLabel.text = @"Not connected";
         
         self.navbarButton.hidden = YES;
     } else {
-        CBPeripheral *discPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+        CBPeripheral *discPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
         
         self.navbarLabel.text = discPeripheral.name;
         
@@ -84,7 +84,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     if(thisPeripheral == nil)
     {
@@ -99,13 +99,13 @@
     
     servicesTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     NSArray *thisPeripheralServices = thisPeripheral.services;
     CBMutableService *thisService = [thisPeripheralServices objectAtIndex:indexPath.row];
     CBUUID *thisServiceUUID = thisService.UUID;
     
-    cell.serviceName.text = [[olp425 sharedInstance] CBUUIDString:thisServiceUUID];
+    cell.serviceName.text = [[ublox sharedInstance] CBUUIDString:thisServiceUUID];
     
     return cell;
 }
@@ -123,7 +123,7 @@
     {
         servicesDetailViewController *vc = segue.destinationViewController;
         
-        CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+        CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
         
         NSArray *thisPeripheralServices = thisPeripheral.services;
         CBMutableService *thisService = [thisPeripheralServices objectAtIndex:ind.row];
@@ -143,9 +143,9 @@
                                           message:nil
                                           preferredStyle:UIAlertControllerStyleActionSheet];
     
-    for(int i = 0; i < [[olp425 sharedInstance] discoveredPeripherals].count;i++)
+    for(int i = 0; i < [[ublox sharedInstance] discoveredPeripherals].count;i++)
     {
-        NSMutableDictionary *thisPeripheralDict = [[[olp425 sharedInstance] discoveredPeripherals] objectAtIndex:i];
+        NSMutableDictionary *thisPeripheralDict = [[[ublox sharedInstance] discoveredPeripherals] objectAtIndex:i];
         CBPeripheral *thisPeripheral = [thisPeripheralDict objectForKey:@"peripheral"];
         
         if(thisPeripheral.state == CBPeripheralStateConnected)
@@ -155,7 +155,7 @@
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action)
                                         {
-                                            [[olp425 sharedInstance] setCurrentPeripheralUUID:thisPeripheral.identifier.UUIDString];
+                                            [[ublox sharedInstance] setCurrentPeripheralUUID:thisPeripheral.identifier.UUIDString];
                                             
                                             [tableview reloadData];
                                             

@@ -45,7 +45,7 @@
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
-    if([[olp425 sharedInstance] scan:NO services:nil])
+    if([[ublox sharedInstance] scan:NO services:nil])
     {
         [scanButton setTitle:@"Scanning..." forState:UIControlStateNormal];
         scanIndicator.hidden = NO;
@@ -90,7 +90,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return [[olp425 sharedInstance] discoveredPeripherals].count;
+    return [[ublox sharedInstance] discoveredPeripherals].count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -99,7 +99,7 @@
     
     scanTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    NSMutableDictionary *thisPeripheralDict = [[[olp425 sharedInstance] discoveredPeripherals] objectAtIndex:indexPath.row];
+    NSMutableDictionary *thisPeripheralDict = [[[ublox sharedInstance] discoveredPeripherals] objectAtIndex:indexPath.row];
     
     NSNumber *thisRSSI = [thisPeripheralDict objectForKey:@"RSSI"];
     CBPeripheral *thisPeripheral = [thisPeripheralDict objectForKey:@"peripheral"];
@@ -127,18 +127,18 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    NSMutableDictionary *thisPeripheralDict = [[[olp425 sharedInstance] discoveredPeripherals] objectAtIndex:indexPath.row];
+    NSMutableDictionary *thisPeripheralDict = [[[ublox sharedInstance] discoveredPeripherals] objectAtIndex:indexPath.row];
     
     CBPeripheral *thisPeripheral = [thisPeripheralDict objectForKey:@"peripheral"];
 
-    [[olp425 sharedInstance] connectPeripheral:thisPeripheral];
+    [[ublox sharedInstance] connectPeripheral:thisPeripheral];
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (IBAction)scanButtonClick:(id)sender
 {
-    if([[olp425 sharedInstance] scan:![[olp425 sharedInstance] scanning] services:nil])
+    if([[ublox sharedInstance] scan:![[ublox sharedInstance] scanning] services:nil])
     {
         [scanButton setTitle:@"Scanning..." forState:UIControlStateNormal];
         scanIndicator.hidden = NO;
@@ -151,8 +151,8 @@
 
 - (IBAction)clearButtonClick:(id)sender
 {
-    [[olp425 sharedInstance] scan:NO services:nil];
-    [[olp425 sharedInstance] clearPeripheralList];
+    [[ublox sharedInstance] scan:NO services:nil];
+    [[ublox sharedInstance] clearPeripheralList];
 
     [scanButton setTitle:@"Start scan" forState:UIControlStateNormal];
     scanIndicator.hidden = YES;

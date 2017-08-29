@@ -20,7 +20,7 @@
 
 #import <UIKit/UIKit.h>
 #import "chatTableViewCell.h"
-#import "olp425.h"
+#import "ublox.h"
 
 @interface chatViewController : UIViewController <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 {

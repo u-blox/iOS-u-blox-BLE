@@ -109,20 +109,20 @@
 - (void)viewDidDisappear:(BOOL)animated {
     [[NSNotificationCenter defaultCenter] removeObserver:self];
     
-    CBPeripheral *discPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *discPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_LEDRED notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_LEDGREEN notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_TEMPERATURE notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_BATTERY notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCRANGE notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCX notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCY notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCZ notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYROX notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYROY notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYROZ notify:NO];
-    [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYRO notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_LEDRED notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_LEDGREEN notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_TEMPERATURE notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_BATTERY notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCRANGE notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCX notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCY notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCZ notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROX notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROY notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROZ notify:NO];
+    [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYRO notify:NO];
 
     
 }
@@ -139,7 +139,7 @@
     //ledGreenSwitch.enabled = NO;
     
     // Check if connected peripheral has gyro service
-    CBPeripheral *currentPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *currentPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     modelButton.hidden = YES;
     modelScene.hidden = YES;
@@ -186,39 +186,39 @@
     accRect.size.width = 0;
     accelerometerZview.frame = accRect;
     
-    if([[[olp425 sharedInstance] currentPeripheralUUID] isEqualToString:@""])
+    if([[[ublox sharedInstance] currentPeripheralUUID] isEqualToString:@""])
     {
         self.navbarLabel.text = @"Not connected";
         
         self.navbarButton.hidden = YES;
     } else {
-        CBPeripheral *discPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+        CBPeripheral *discPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
         
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_LEDRED];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_LEDGREEN];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_TEMPERATURE];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_BATTERY];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_ACCRANGE];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_ACCX];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_ACCY];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_ACCZ];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_GYROX];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_GYROY];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_GYROZ];
-        [[olp425 sharedInstance] readDataFromPeripheral:discPeripheral olp425charAct:OLP425_GYRO];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_LEDRED];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_LEDGREEN];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_TEMPERATURE];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_BATTERY];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCRANGE];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCX];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCY];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCZ];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROX];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROY];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROZ];
+        [[ublox sharedInstance] readDataFromPeripheral:discPeripheral ubloxcharAct:UBLOX_GYRO];
         
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_LEDRED notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_LEDGREEN notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_TEMPERATURE notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_BATTERY notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCRANGE notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCX notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCY notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_ACCZ notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYROX notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYROY notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYROZ notify:YES];
-        [[olp425 sharedInstance] notifyPeripheral:discPeripheral olp425charAct:OLP425_GYRO notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_LEDRED notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_LEDGREEN notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_TEMPERATURE notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_BATTERY notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCRANGE notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCX notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCY notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_ACCZ notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROX notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROY notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYROZ notify:YES];
+        [[ublox sharedInstance] notifyPeripheral:discPeripheral ubloxcharAct:UBLOX_GYRO notify:YES];
         
         self.navbarLabel.text = discPeripheral.name;
         
@@ -234,7 +234,7 @@
     NSString *foundUUID = [dict objectForKey:@"UUID"];
     NSNumber *foundRSSI = [dict objectForKey:@"RSSI"];
     
-    if([[[olp425 sharedInstance] currentPeripheralUUID] isEqualToString:foundUUID])
+    if([[[ublox sharedInstance] currentPeripheralUUID] isEqualToString:foundUUID])
     {
         rssiLabel.text = [NSString stringWithFormat:@"%@ dB", foundRSSI];
     }
@@ -250,8 +250,8 @@
 
     CBCharacteristic *foundCharact = [dict objectForKey:@"characteristic"];
     
-    NSNumber *OLP425characteristicNSNumber = [dict objectForKey:@"OLP425characteristic"];
-    int OLP425characteristic = [OLP425characteristicNSNumber intValue];
+    NSNumber *UBLOXcharacteristicNSNumber = [dict objectForKey:@"UBLOXcharacteristic"];
+    int UBLOXcharacteristic = [UBLOXcharacteristicNSNumber intValue];
     
     char *p = (char*)foundCharact.value.bytes;
     
@@ -276,9 +276,9 @@
     }
     
     
-    if([[[olp425 sharedInstance] currentPeripheralUUID] isEqualToString:foundUUID])
+    if([[[ublox sharedInstance] currentPeripheralUUID] isEqualToString:foundUUID])
     {
-        if(OLP425characteristic == OLP425_GYRO)
+        if(UBLOXcharacteristic == UBLOX_GYRO)
         {
             /*
              [0] = acc/gyro_x
@@ -322,12 +322,12 @@
                 myObject.transform = SCNMatrix4Mult(rotationMatrix, myObject.transform);
             });
         }
-        if(OLP425characteristic == OLP425_GYROX)
+        if(UBLOXcharacteristic == UBLOX_GYROX)
         {
             //NSInteger val = p[0];
         }
         
-        if(OLP425characteristic == OLP425_ACCX)
+        if(UBLOXcharacteristic == UBLOX_ACCX)
         {
             NSInteger val = p[0] + 128;
             
@@ -339,7 +339,7 @@
             accRect.size.width = accNewwidth;
             accelerometerXview.frame = accRect;
         }
-        if(OLP425characteristic == OLP425_ACCY)
+        if(UBLOXcharacteristic == UBLOX_ACCY)
         {
             NSInteger val = p[0] + 128;
             
@@ -351,7 +351,7 @@
             accRect.size.width = accNewwidth;
             accelerometerYview.frame = accRect;
         }
-        if(OLP425characteristic == OLP425_ACCZ)
+        if(UBLOXcharacteristic == UBLOX_ACCZ)
         {
             NSInteger val = p[0] + 128;
             
@@ -363,21 +363,21 @@
             accRect.size.width = accNewwidth;
             accelerometerZview.frame = accRect;            
         }
-        if(OLP425characteristic == OLP425_ACCRANGE)
+        if(UBLOXcharacteristic == UBLOX_ACCRANGE)
         {
             NSInteger range = (p[1] << 8) | p[0];
             
             self.accelerometerLabel.text = [NSString stringWithFormat:@"+-%ldG", (long)range];
         }
-        if(OLP425characteristic == OLP425_TEMPERATURE)
+        if(UBLOXcharacteristic == UBLOX_TEMPERATURE)
         {
             self.temperatureLabel.text = [[NSString alloc] initWithFormat:@"%d% °C", p[0]];
         }
-        if(OLP425characteristic == OLP425_BATTERY)
+        if(UBLOXcharacteristic == UBLOX_BATTERY)
         {
             self.batteryLabel.text = [[NSString alloc] initWithFormat:@"%d%%", p[0]];
         }
-        if(OLP425characteristic == OLP425_LEDRED)
+        if(UBLOXcharacteristic == UBLOX_LEDRED)
         {
             self.ledRedSwitch.enabled = true;
             if(p[0] != 0)
@@ -387,7 +387,7 @@
                 self.ledRedSwitch.on = NO;
             }
         }
-        if(OLP425characteristic == OLP425_LEDGREEN)
+        if(UBLOXcharacteristic == UBLOX_LEDGREEN)
         {
             self.ledGreenSwitch.enabled = true;
             if(p[0] != 0)
@@ -408,7 +408,7 @@
 
 - (IBAction) toggleRedLedSwitch: (id) UISwitch
 {
-    CBPeripheral *discPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *discPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     int writeValue = 0;
 
@@ -419,12 +419,12 @@
     
     NSData *valueData = [NSData dataWithBytes:&writeValue length:1];
     
-    [[olp425 sharedInstance] writeDataToPeripheral: discPeripheral olp425charAct:OLP425_LEDRED value:valueData];
+    [[ublox sharedInstance] writeDataToPeripheral: discPeripheral ubloxcharAct:UBLOX_LEDRED value:valueData];
 }
 
 - (IBAction) toggleGreenLedSwitch: (id) UISwitch
 {
-    CBPeripheral *discPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *discPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     int writeValue = 0;
     
@@ -435,7 +435,7 @@
     
     NSData *valueData = [NSData dataWithBytes:&writeValue length:1];
     
-    [[olp425 sharedInstance] writeDataToPeripheral: discPeripheral olp425charAct:OLP425_LEDGREEN value:valueData];
+    [[ublox sharedInstance] writeDataToPeripheral: discPeripheral ubloxcharAct:UBLOX_LEDGREEN value:valueData];
 }
 
 - (IBAction) selectDevice: (id) UIButton
@@ -445,9 +445,9 @@
                                           message:nil
                                           preferredStyle:UIAlertControllerStyleActionSheet];
     
-    for(int i = 0; i < [[olp425 sharedInstance] discoveredPeripherals].count;i++)
+    for(int i = 0; i < [[ublox sharedInstance] discoveredPeripherals].count;i++)
     {
-        NSMutableDictionary *thisPeripheralDict = [[[olp425 sharedInstance] discoveredPeripherals] objectAtIndex:i];
+        NSMutableDictionary *thisPeripheralDict = [[[ublox sharedInstance] discoveredPeripherals] objectAtIndex:i];
         CBPeripheral *thisPeripheral = [thisPeripheralDict objectForKey:@"peripheral"];
         
         if(thisPeripheral.state == CBPeripheralStateConnected)
@@ -457,7 +457,7 @@
                                         style:UIAlertActionStyleDefault
                                         handler:^(UIAlertAction *action)
                                         {
-                                            [[olp425 sharedInstance] setCurrentPeripheralUUID:thisPeripheral.identifier.UUIDString];
+                                            [[ublox sharedInstance] setCurrentPeripheralUUID:thisPeripheral.identifier.UUIDString];
                                             
                                             [self startup];                                            
                                         }]];

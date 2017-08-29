@@ -36,7 +36,7 @@
                                                  name:@"peripheralValue"
                                                object:nil];
 
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     CBCharacteristic *thisCharacteristic = nil;
     
@@ -63,7 +63,7 @@
     
     CBCharacteristic *foundCharact = [dict objectForKey:@"characteristic"];
     
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     CBCharacteristic *thisCharacteristic = nil;
     
@@ -115,7 +115,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     if(thisPeripheral == nil)
     {
@@ -140,7 +140,7 @@
     
     servicesDetailTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     if(thisPeripheral == nil)
     {
@@ -161,9 +161,9 @@
         }
     }
     
-    cell.characteristicName.text = [[olp425 sharedInstance] strFromCharacteristicUUID:thisService.UUID charactUuid:thisCharacteristic.UUID];
+    cell.characteristicName.text = [[ublox sharedInstance] strFromCharacteristicUUID:thisService.UUID charactUuid:thisCharacteristic.UUID];
     cell.characteristicValue.text = strFromCharacteristicValue(thisService.UUID, thisCharacteristic.UUID, thisCharacteristic.value);
-    cell.characteristicType.text = [[olp425 sharedInstance] strFromCharacteristicProperties:thisCharacteristic.properties];
+    cell.characteristicType.text = [[ublox sharedInstance] strFromCharacteristicProperties:thisCharacteristic.properties];
     
     return cell;
 }
@@ -182,7 +182,7 @@
     {
         editViewController *vc = segue.destinationViewController;
         
-        CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+        CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
         
         CBService *thisService = nil;
         CBCharacteristic *thisCharacteristic = nil;

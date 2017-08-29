@@ -23,6 +23,9 @@
 @interface infoViewController : UIViewController
 
 
+@property (weak, nonatomic) IBOutlet UILabel *versionLabel;
+
+
 - (IBAction)closeInfo:(id)sender;
 - (IBAction)openWeb:(id)sender;
 

@@ -19,7 +19,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "olp425.h"
+#import "ublox.h"
 
 @interface editViewController : UIViewController <UITextFieldDelegate>
 {

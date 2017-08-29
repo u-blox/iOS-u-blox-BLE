@@ -46,7 +46,7 @@
     [super viewWillAppear:animated];
     
     // Check if connected peripheral has gyro service
-    CBPeripheral *currentPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *currentPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
     //modelButton.hidden = YES;
     //modelScene.hidden = YES;
@@ -90,9 +90,9 @@
                                                object:nil];
 
     
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
-    for(SerialPort* sp in [[olp425 sharedInstance] serialPorts])
+    for(SerialPort* sp in [[ublox sharedInstance] serialPorts])
     {
         if([sp.peripheral.identifier.UUIDString isEqualToString:thisPeripheral.identifier.UUIDString])
         {
@@ -106,9 +106,9 @@
 
 - (void)viewWillDisappear:(BOOL)animated
 {
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
-    for(SerialPort* sp in [[olp425 sharedInstance] serialPorts])
+    for(SerialPort* sp in [[ublox sharedInstance] serialPorts])
     {
         if([sp.peripheral.identifier.UUIDString isEqualToString:thisPeripheral.identifier.UUIDString])
         {
@@ -137,7 +137,7 @@
         NSString *messageText = [dict objectForKey:@"message"];
         NSString *writeState = [dict objectForKey:@"writestate"];
         
-        if([[[olp425 sharedInstance] getCurrentUUID] isEqualToString:messagePeripheralUUID])
+        if([[[ublox sharedInstance] getCurrentUUID] isEqualToString:messagePeripheralUUID])
         {
             NSDateFormatter *format = [[NSDateFormatter alloc] init];
             [format setDateFormat:@"yyyy-MM-dd HH:mm:ss"];
@@ -148,7 +148,7 @@
             
             if([writeState isEqualToString:@"read"])
             {
-                NSDictionary *message = [[NSDictionary alloc] initWithObjectsAndKeys: [[olp425 sharedInstance] getCurrentPeripheral].name, @"name", messageText, @"message", dateString, @"datetext", nil];
+                NSDictionary *message = [[NSDictionary alloc] initWithObjectsAndKeys: [[ublox sharedInstance] getCurrentPeripheral].name, @"name", messageText, @"message", dateString, @"datetext", nil];
                 
                 [messages addObject:message];
             } else {
@@ -296,9 +296,9 @@
 	textMessage = textToSend;
     }
     
-    CBPeripheral *thisPeripheral = [[olp425 sharedInstance] getCurrentPeripheral];
+    CBPeripheral *thisPeripheral = [[ublox sharedInstance] getCurrentPeripheral];
     
-    [[olp425 sharedInstance] serialSendMessageToPeripheralUUID:thisPeripheral.identifier.UUIDString message:textMessage];
+    [[ublox sharedInstance] serialSendMessageToPeripheralUUID:thisPeripheral.identifier.UUIDString message:textMessage];
 
 }
 

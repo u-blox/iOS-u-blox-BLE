@@ -37,7 +37,7 @@
 #define SP_WRITE_COMPLETE_TIMEOUT (0.0f)
 
 // Max packets the remote device may transmit without getting more credits
-#define SP_MAX_CREDITS (10)
+#define SP_MAX_CREDITS (32)
 
 #define SP_CURRENT_SERIAL_PORT_VERSION (2)
 
@@ -92,9 +92,11 @@ typedef enum
     
     NSMutableArray  *txQueue;
     ChatMessage     *outstandingMsg;
+    
+    long             package_max_size;
 }
 
-@synthesize isOpen, peripheral;
+@synthesize isOpen, peripheral, isTestingRX, isTestingTX, testTxByteCount, testRxByteCount, testRxErrorCount, useCredits, testLimitTXcount, testRXStartTime, testRXEndTime, testTXStartTime, testTXEndTime;
 
 - (SerialPort*) initWithPeripheral: (CBPeripheral*) periph andDelegate: (id) deleg
 {
@@ -119,6 +121,12 @@ typedef enum
     outstandingMsg = nil;
     
     chatState = CHAT_S_APPEARED_IDLE;
+    
+    package_max_size = [periph maximumWriteValueLengthForType:CBCharacteristicWriteWithoutResponse];
+    
+    useCredits = YES;
+    
+    testLimitTXcount = 0;
     
     return self;
 }
@@ -253,22 +261,40 @@ typedef enum
 {
     serialPortVersion = [self getSerialPortVersion];
     
-    state = SP_S_WAIT_INITIAL_TX_CREDITS;
+    if(useCredits)
+    {
+        state = SP_S_WAIT_INITIAL_TX_CREDITS;
+    } else {
+        isOpen = TRUE;
         
+        state = SP_S_OPEN;
+        stateTx = SP_S_TX_IDLE;
+        nTxCnt = 0;
+    }
+    
     if(serialPortVersion == 1)
     {
         [peripheral setNotifyValue: TRUE forCharacteristic:fifoCharacteristic];
-        [peripheral setNotifyValue: TRUE forCharacteristic:creditsCharacteristic];
+        if(useCredits)
+        {
+            [peripheral setNotifyValue: TRUE forCharacteristic:creditsCharacteristic];
+        }
     }
     else
     {
         // Current version
             
-        [peripheral setNotifyValue: TRUE forCharacteristic:creditsCharacteristic];
+        if(useCredits)
+        {
+            [peripheral setNotifyValue: TRUE forCharacteristic:creditsCharacteristic];
+        }
         [peripheral setNotifyValue: TRUE forCharacteristic:fifoCharacteristic];
     }
         
-    [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+    if(useCredits)
+    {
+        [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+    }
 }
 
 -(void) discoverServices
@@ -369,15 +395,21 @@ typedef enum
     {
         if(serialPortVersion == 1)
         {
-            if(creditsCharacteristic != nil)
-                [peripheral setNotifyValue: FALSE forCharacteristic:creditsCharacteristic];
+            if(useCredits)
+            {
+                if(creditsCharacteristic != nil)
+                    [peripheral setNotifyValue: FALSE forCharacteristic:creditsCharacteristic];
+            }
             
             if(fifoCharacteristic != nil)
                 [peripheral setNotifyValue: FALSE forCharacteristic:fifoCharacteristic];
         }
         else
         {
-            [peripheral writeValue:disconnectCredit forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+            if(useCredits)
+            {
+                [peripheral writeValue:disconnectCredit forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+            }
         }
     }
     
@@ -416,9 +448,9 @@ typedef enum
        (state == SP_S_OPEN))
     {
 
-        if(data.length <= SP_MAX_WRITE_SIZE)
+        if(data.length <= package_max_size)
         {
-            if((nTxCredits > 0) && (stateTx == SP_S_TX_IDLE))
+            if((nTxCredits > 0 || useCredits == NO) && (stateTx == SP_S_TX_IDLE))
             {
                 nTxCredits--;
                 nTxCnt++;
@@ -530,13 +562,24 @@ typedef enum
         }
     }
     
-    if((fifoCharacteristic != nil) &&
-       (creditsCharacteristic != nil) &&
-       ((creditsCharacteristic.properties & CBCharacteristicPropertyNotify) != 0) &&
-       (modelNumberCharacteristic != nil) && (modelNumberCharacteristic.value != nil) &&
-       (fwVersionCharacteristic != nil) && (fwVersionCharacteristic.value != nil))
+    if(useCredits)
     {
-        [self openSerialPortService];
+        if((fifoCharacteristic != nil) &&
+           (creditsCharacteristic != nil) &&
+           ((creditsCharacteristic.properties & CBCharacteristicPropertyNotify) != 0) &&
+           (modelNumberCharacteristic != nil) && (modelNumberCharacteristic.value != nil) &&
+           (fwVersionCharacteristic != nil) && (fwVersionCharacteristic.value != nil))
+        {
+            [self openSerialPortService];
+        }
+    } else {
+        if((fifoCharacteristic != nil) &&
+           (creditsCharacteristic != nil) &&
+           (modelNumberCharacteristic != nil) && (modelNumberCharacteristic.value != nil) &&
+           (fwVersionCharacteristic != nil) && (fwVersionCharacteristic.value != nil))
+        {
+            [self openSerialPortService];
+        }
     }
 }
 
@@ -545,13 +588,25 @@ typedef enum
     switch (state)
     {
         case SP_S_WAIT_CHARACT_SEARCH:
-            if((fifoCharacteristic != nil) &&
-               (creditsCharacteristic != nil) &&
-               ((creditsCharacteristic.properties & CBCharacteristicPropertyNotify) != 0) &&
-               (modelNumberCharacteristic != nil) && (modelNumberCharacteristic.value != nil) &&
-               (fwVersionCharacteristic != nil) && (fwVersionCharacteristic.value != nil))
+            if(useCredits)
             {
-                [self openSerialPortService];
+                if((fifoCharacteristic != nil) &&
+                   (creditsCharacteristic != nil) &&
+                   ((creditsCharacteristic.properties & CBCharacteristicPropertyNotify) != 0) &&
+                   (modelNumberCharacteristic != nil) && (modelNumberCharacteristic.value != nil) &&
+                   (fwVersionCharacteristic != nil) && (fwVersionCharacteristic.value != nil))
+                {
+                    [self openSerialPortService];
+                }
+                
+            } else {
+                if((fifoCharacteristic != nil) &&
+                   (creditsCharacteristic != nil) &&
+                   (modelNumberCharacteristic != nil) && (modelNumberCharacteristic.value != nil) &&
+                   (fwVersionCharacteristic != nil) && (fwVersionCharacteristic.value != nil))
+                {
+                    [self openSerialPortService];
+                }
             }
             break;
             
@@ -584,7 +639,7 @@ typedef enum
                     nTxCredits--;
                     
                     nTxCnt++;
-                    
+
                     if((nTxCnt < SP_WRITE_WITH_RESPONSE_CNT) || (nTxCnt == -1) || (serialPortVersion == 1))
                     {
                         [peripheral writeValue:pendingData forCharacteristic:fifoCharacteristic type:CBCharacteristicWriteWithoutResponse];
@@ -609,31 +664,43 @@ typedef enum
             {
                 [self port: self receivedData: [fifoCharacteristic value]];
                 
-                nRxCredits--;
-                
-                if(nRxCredits == 0)
+                if(useCredits)
                 {
-                    unsigned char *p = (unsigned char*)dataRxCredits.bytes;
-                    
-                    if(stateTx == SP_S_TX_IDLE)
+                    nRxCredits--;
+                
+                    if(nRxCredits == 16)
                     {
-                        nRxCredits = (NSUInteger)(p[0]);
-
-                        if(serialPortVersion == 1)
+                        unsigned char *p = (unsigned char*)dataRxCredits.bytes;
+                    
+                        if(stateTx == SP_S_TX_IDLE)
                         {
-                            [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+                            nRxCredits = (NSUInteger)(p[0]);
+                            
+                            // TODO: FIX
+                            unsigned char buf[1] = {SP_MAX_CREDITS/2};
+                            
+                            NSData *TEMPdataRxCredits = [NSData dataWithBytes:buf length:1];
+
+                            
+                            if(serialPortVersion == 1)
+                            {
+                                [peripheral writeValue:TEMPdataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+                            }
+                            else
+                            {
+                                [peripheral writeValue:TEMPdataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithResponse];
+                        
+                                //stateTx = SP_S_TX_IN_PROGRESS;
+                                stateTx = SP_S_TX_IDLE;
+                            }
                         }
                         else
                         {
-                            [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithResponse];
-                        
-                            stateTx = SP_S_TX_IN_PROGRESS;
+                            pendingCredits = TRUE;
                         }
                     }
-                    else
-                    {
-                        pendingCredits = TRUE;
-                    }
+                } else {
+                    stateTx = SP_S_TX_IDLE;
                 }
             }
             break;
@@ -651,50 +718,52 @@ typedef enum
         
         stateTx = SP_S_TX_IDLE;
         
-        if(pendingCredits == TRUE)
+        if(useCredits)
         {
-            unsigned char *p = (unsigned char*)dataRxCredits.bytes;
-            
-            nRxCredits = (NSUInteger)(p[0]);
-            
-            if(serialPortVersion == 1)
+            if(pendingCredits == TRUE)
             {
-                [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
-            }
-            else
-            {
-                [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithResponse];
+                unsigned char *p = (unsigned char*)dataRxCredits.bytes;
+            
+                nRxCredits = (NSUInteger)(p[0]);
+            
+                if(serialPortVersion == 1)
+                {
+                    [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithoutResponse];
+                }
+                else
+                {
+                    [peripheral writeValue:dataRxCredits forCharacteristic:creditsCharacteristic type:CBCharacteristicWriteWithResponse];
                 
-                stateTx = SP_S_TX_IN_PROGRESS;
-            }
+                    stateTx = SP_S_TX_IN_PROGRESS;
+                }
             
-            pendingCredits = FALSE;
+                pendingCredits = FALSE;
+            }
+            else if( (nTxCredits > 0) && (pendingData != nil))
+            {
+                nTxCredits--;
+            
+                nTxCnt++;
+            
+                if((nTxCnt < SP_WRITE_WITH_RESPONSE_CNT) || (nTxCnt == -1) || (serialPortVersion == 1))
+                {
+                    [peripheral writeValue:pendingData forCharacteristic:fifoCharacteristic type:CBCharacteristicWriteWithoutResponse];
+                
+                    pendingData = nil;
+                
+                    [self performSelector:@selector(writeCompleteSelector) withObject:nil afterDelay:SP_WRITE_COMPLETE_TIMEOUT];
+                }
+                else
+                {
+                    [peripheral writeValue:pendingData forCharacteristic:fifoCharacteristic type:CBCharacteristicWriteWithResponse];
+                
+                    pendingData = nil;
+                    nTxCnt = 0;
+                
+                    stateTx = SP_S_TX_IN_PROGRESS;
+                }
+            }
         }
-        else if( (nTxCredits > 0) && (pendingData != nil))
-        {
-            nTxCredits--;
-            
-            nTxCnt++;
-            
-            if((nTxCnt < SP_WRITE_WITH_RESPONSE_CNT) || (nTxCnt == -1) || (serialPortVersion == 1))
-            {
-                [peripheral writeValue:pendingData forCharacteristic:fifoCharacteristic type:CBCharacteristicWriteWithoutResponse];
-                
-                pendingData = nil;
-                
-                [self performSelector:@selector(writeCompleteSelector) withObject:nil afterDelay:SP_WRITE_COMPLETE_TIMEOUT];
-            }
-            else
-            {
-                [peripheral writeValue:pendingData forCharacteristic:fifoCharacteristic type:CBCharacteristicWriteWithResponse];
-                
-                pendingData = nil;
-                nTxCnt = 0;
-                
-                stateTx = SP_S_TX_IN_PROGRESS;
-            }
-        }
-        
         if(charact == fifoCharacteristic)
         {
             if(err == nil)
@@ -728,7 +797,7 @@ typedef enum
 {
     //SerialPort      *sp;
     NSData          *data;
-    unsigned char   buf[SP_MAX_WRITE_SIZE];
+    unsigned char   buf[package_max_size];
     NSUInteger      len;
     NSRange         range;
     BOOL            ok;
@@ -736,14 +805,25 @@ typedef enum
         
     if( (chatState == CHAT_S_APPEARED_IDLE) && (txQueue.count > 0))
     {
-        outstandingMsg = [txQueue objectAtIndex:0];
-        
-        range.location = 0;
-        range.length = outstandingMsg.message.length;
-        
-        ok = [outstandingMsg.message getBytes:buf maxLength:SP_MAX_WRITE_SIZE usedLength:&len encoding:NSUTF8StringEncoding options:NSStringEncodingConversionAllowLossy range:range remainingRange:&range];
-        
-        data = [NSData  dataWithBytes:buf length:len];
+        if(isTestingTX)
+        {
+            for(int i = 0; i < package_max_size; i++)
+            {
+                buf[i] = i;
+            }
+            
+            data = [NSData  dataWithBytes:buf length:package_max_size];
+            
+        } else {
+            outstandingMsg = [txQueue objectAtIndex:0];
+            
+            range.location = 0;
+            range.length = outstandingMsg.message.length;
+            
+            ok = [outstandingMsg.message getBytes:buf maxLength:package_max_size usedLength:&len encoding:NSUTF8StringEncoding options:NSStringEncodingConversionAllowLossy range:range remainingRange:&range];
+            
+            data = [NSData  dataWithBytes:buf length:len];
+        }
         
         if(self.isOpen == TRUE)
         {
@@ -757,7 +837,17 @@ typedef enum
         
         if(nWrites > 0)
         {
+            if(isTestingTX)
+            {
+                testTxByteCount += data.length;
+                if(testLimitTXcount <= testTxByteCount && testLimitTXcount != 0)
+                {
+                    [self stopTXTest];
+                }
+            }
+            
             [txQueue removeObjectAtIndex:0];
+            
             
             NSDictionary *messageDictionary = [[NSDictionary alloc] initWithObjectsAndKeys: peripheral.identifier.UUIDString, @"UUID", outstandingMsg.message, @"message", @"write", @"writestate", nil];
             
@@ -766,8 +856,22 @@ typedef enum
              object:self userInfo:messageDictionary];
 
             chatState = CHAT_S_APPEARED_WAIT_TX;
+            
+            if(isTestingTX)
+            {
+                // TODO: DELAY
+                //[self performSelector:@selector(doSendTest) withObject:nil afterDelay:1];
+                [self doSendTest];
+            }
+            
         }
     }
+}
+
+-(void)doSendTest
+{
+    
+    [self sendMessage:@"x"];
 }
 
 -(NSString*)getStateName: (int)stateNumber
@@ -848,6 +952,24 @@ typedef enum
 
 - (void) port: (SerialPort*) sp receivedData: (NSData*)data
 {
+    if(isTestingRX)
+    {
+        testRxByteCount += data.length;
+        // Error check data
+        unsigned char *testBytes = [data bytes];
+        for(int i = 1;i < data.length;i++)
+        {
+            int prevByte = testBytes[i-1];
+            int thisByte = testBytes[i];
+            
+            if(thisByte != prevByte+1)
+            {
+                testRxErrorCount += 1;
+            }
+        }
+        
+    }
+    
     NSString *str = [[NSString alloc] initWithBytes:data.bytes length:data.length encoding:NSUTF8StringEncoding];
     
     NSDictionary *messageDictionary = [[NSDictionary alloc] initWithObjectsAndKeys: peripheral.identifier.UUIDString, @"UUID", str, @"message", @"read", @"writestate", nil];
@@ -855,6 +977,46 @@ typedef enum
     [[NSNotificationCenter defaultCenter]
      postNotificationName:@"serialportMessage"
      object:self userInfo:messageDictionary];
+}
+
+- (void)setPackageMax: (long)maxValue
+{
+    package_max_size = maxValue;
+}
+- (long)getPackageMax
+{
+    return package_max_size;
+}
+
+- (void) startTXTest
+{
+    isTestingTX = YES;
+    testTxByteCount = 0;
+    
+    testTXStartTime = [NSDate date];
+    
+    [self doSendTest];
+}
+
+- (void) stopTXTest
+{
+    testTXEndTime = [NSDate date];
+    isTestingTX = NO;
+}
+
+- (void) startRXTest
+{
+    isTestingRX = YES;
+    testRxByteCount = 0;
+    testRxErrorCount = 0;
+    
+    testRXStartTime = [NSDate date];
+}
+
+- (void) stopRXTest
+{
+    testRXEndTime = [NSDate date];
+    isTestingRX = NO;
 }
 
 @end

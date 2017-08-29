@@ -19,7 +19,7 @@
  */
 
 #import <UIKit/UIKit.h>
-#import "olp425.h"
+#import "ublox.h"
 #import "servicesDetailViewController.h"
 
 @interface servicesViewController : UIViewController <UITableViewDataSource, UITableViewDelegate>

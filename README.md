@@ -1,4 +1,4 @@
-# iOS-u-blox-BLE
+# iOS-u-blox-BLE 2.7.1
 The u-blox Bluetooth low energy iOS app allows developers to evaluate the stand-alone Bluetooth low energy modules from u-blox.
 
 https://itunes.apple.com/us/app/u-blox-ble/id575523395?mt=8

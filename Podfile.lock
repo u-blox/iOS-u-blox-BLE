@@ -1,0 +1,28 @@
+PODS:
+  - Cuckoo (1.4.1):
+    - Cuckoo/Swift (= 1.4.1)
+  - Cuckoo/Swift (1.4.1)
+  - nRFMeshProvision (2.2.3):
+    - OpenSSL-Universal (= 1.0.2.19)
+  - OpenSSL-Universal (1.0.2.19):
+    - OpenSSL-Universal/Static (= 1.0.2.19)
+  - OpenSSL-Universal/Static (1.0.2.19)
+
+DEPENDENCIES:
+  - Cuckoo
+  - nRFMeshProvision
+
+SPEC REPOS:
+  trunk:
+    - Cuckoo
+    - nRFMeshProvision
+    - OpenSSL-Universal
+
+SPEC CHECKSUMS:
+  Cuckoo: 4625f7f54d9bb880123270e8969898d6c1d036b5
+  nRFMeshProvision: ecb20ce595bb421f2350e539f05d7391dd507724
+  OpenSSL-Universal: 8b48cc0d10c1b2923617dfe5c178aa9ed2689355
+
+PODFILE CHECKSUM: 182b10ae5419ad3e831ff043a3ab7262d2e37c2f
+
+COCOAPODS: 1.9.0

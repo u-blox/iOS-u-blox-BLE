@@ -1,0 +1,29 @@
+{
+  "configurations" : [
+    {
+      "id" : "BECD7F04-6090-4EAD-9E8D-EA7A503FB6BA",
+      "name" : "Configuration 1",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "codeCoverage" : false,
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:U-blox.xcodeproj",
+      "identifier" : "AB5B398A1A9B24EB002ACEDF",
+      "name" : "U-blox"
+    }
+  },
+  "testTargets" : [
+    {
+      "target" : {
+        "containerPath" : "container:U-blox.xcodeproj",
+        "identifier" : "B690307C23D6FF5D00F2F037",
+        "name" : "Tests"
+      }
+    }
+  ],
+  "version" : 1
+}
